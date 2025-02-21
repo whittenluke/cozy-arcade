@@ -9,9 +9,16 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
+interface Game {
+  id: string;
+  title: string;
+  description: string;
+  created_at: string;
+}
+
 export default function Home() {
   const [user, setUser] = useState<User | null>(null);
-  const [games, setGames] = useState<any[]>([]);
+  const [games, setGames] = useState<Game[]>([]);
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
