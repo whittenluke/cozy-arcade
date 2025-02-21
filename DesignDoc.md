@@ -11,6 +11,41 @@ CozyArcade is a web platform for browser-based games with a unique intergalactic
 
 CozyArcade creates a space where players can escape into beautifully crafted browser games within an intriguing cosmic environment. We prioritize quality over quantity, focusing on delivering a seamless, engaging experience that feels both familiar and fresh.
 
+## Platform Architecture
+
+### Repository Structure
+
+- **Platform Repository (cozy-arcade)**
+
+  - Main platform codebase (cozyarcade.games)
+  - Game discovery and showcase
+  - User authentication and profiles
+  - High score tracking
+  - Platform-wide styling and components
+
+- **Game Repositories**
+  - Each game has its own repository (e.g., cozy-ballerflow)
+  - Games deploy to subdirectories of main domain
+  - Games share Supabase instance for:
+    - User authentication
+    - Score tracking
+    - Game state persistence
+
+### Game Integration
+
+- **Hosting Strategy**
+
+  - Platform hosted on Netlify (cozyarcade.games)
+  - Games deploy as subdirectories (e.g., cozyarcade.games/ballerflow)
+  - Single Netlify site with multiple deploy contexts
+  - Clean URLs and seamless navigation
+
+- **Data Flow**
+  - Games authenticate users via shared Supabase instance
+  - Platform displays game metadata (title, description, thumbnails)
+  - High scores and achievements sync to platform
+  - User progress persists across sessions
+
 ## Technical Architecture
 
 ### Hosting & Infrastructure
@@ -18,20 +53,26 @@ CozyArcade creates a space where players can escape into beautifully crafted bro
 - **Frontend Hosting:** Netlify (Free tier)
 - **Backend Services:** Supabase (Free tier)
   - Authentication system
-  - Game storage
+  - Game storage and metadata
   - User data management
   - Leaderboards
   - Basic analytics
 
 ### Tech Stack
 
-- **Frontend:**
+- **Platform Frontend:**
+
   - React.js/Next.js
   - TailwindCSS for styling
   - Three.js for interactive backgrounds
+
 - **Game Development:**
-  - Initial focus: HTML5 + Canvas/WebGL
-  - Support for integration with popular web game frameworks (Phaser, PixiJS)
+
+  - Independent tech stack per game
+  - HTML5 + Canvas/WebGL recommended
+  - Common frameworks: Phaser, PixiJS
+  - Must integrate with Supabase for auth/data
+
 - **Backend:**
   - Supabase for serverless functions
   - PostgreSQL database (via Supabase)
@@ -143,12 +184,18 @@ font-family: "Inter", sans-serif;
 - [x] Domain registration and setup
 - [x] Database schema design and documentation
 - [ ] Basic branding elements finalized
-- [ ] Static landing page deployed to Netlify
+- [x] Platform landing page deployed to Netlify
 - [x] Supabase integration for authentication
   - [x] GitHub authentication enabled
   - [x] Database tables and policies configured
   - [x] Basic game management working
-- [ ] Simple game showcase page (3-5 curated games)
+- [ ] Game showcase page structure
+  - [ ] Game card design
+  - [ ] Game embedding system
+  - [ ] Score display
+- [ ] First game repository setup
+  - [ ] Basic game implementation
+  - [ ] Platform integration testing
 - [ ] Basic user profiles
 
 **Milestone: Public Beta Launch**
@@ -281,3 +328,121 @@ While maintaining our MVP focus, these areas have been identified for potential 
 CozyArcade aims to create a unique space in browser-based gaming by combining elegant design, seamless performance, and carefully curated games. By focusing on our intergalactic aesthetic while maintaining simplicity, we'll create an experience that stands out in the crowded gaming market.
 
 This document serves as a living guide that will evolve as the project develops, always keeping our core principles of quality, simplicity, and wonder at the forefront.
+
+## Game Development Guide for Luke
+
+### Repository and Deployment Structure
+
+- Each game gets its own repository
+
+  ```
+  cozy-arcade/              # Main platform repo
+    src/
+      app/
+        page.tsx           # Landing/showcase page
+        games/            # Game listing and metadata
+
+  cozy-ballerflow/         # Game repo (example)
+    src/
+      app/
+        page.tsx          # Game entry point
+      game/              # Game logic
+      components/        # Game UI
+  ```
+
+### Deployment Strategy
+
+1. **Repository Setup**
+
+   - Create new repo for each game (e.g., `cozy-ballerflow`)
+   - Use Next.js + TypeScript (consistent with platform)
+   - Independent development and version control
+
+2. **Netlify Configuration**
+
+   - Use existing Netlify site (cozy-arcade)
+   - Add deploy context for game repository
+   - Configure build settings for subdirectory deployment
+   - Example path: `cozyarcade.games/ballerflow`
+
+3. **Environment Setup**
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=same-as-platform
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=same-as-platform
+   ```
+
+### Supabase Integration
+
+```typescript
+// In your game's lib/supabase.ts
+import { createClient } from "@supabase/supabase-js";
+
+// Use same Supabase instance as platform
+export const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
+
+// Example score saving
+async function saveScore(score: number) {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return;
+
+  await supabase.from("game_scores").insert({
+    game_id: "ballerflow",
+    user_id: user.id,
+    score: score,
+  });
+}
+```
+
+### Development Workflow
+
+1. Start new game project:
+
+   ```bash
+   # Ask AI: "Help me create a new game repository"
+   npx create-next-app cozy-ballerflow
+   ```
+
+2. Develop game independently:
+
+   - Build and test locally
+   - Use platform's Supabase for auth/data
+   - Follow cosmic theme guidelines
+
+3. Deploy:
+   - Push to GitHub
+   - Configure Netlify deploy settings
+   - Game available at cozyarcade.games/game-name
+
+### Integration Checklist
+
+- [ ] Uses platform's Supabase instance
+- [ ] Follows cosmic theme
+- [ ] Handles authentication
+- [ ] Saves scores properly
+- [ ] Responsive design
+- [ ] Fast loading (< 3s)
+- [ ] Error handling
+- [ ] Pause functionality
+
+### Tech Stack Options
+
+- Canvas API for simple 2D games
+- Phaser.js for complex 2D games
+- Three.js for 3D games
+- React components for UI
+
+### Testing Focus
+
+- Cross-browser compatibility
+- Responsive design
+- Performance metrics
+- Score saving reliability
+- Authentication flow
+- Error handling
+
+Note: Each game is an independent project that deploys to the main platform's domain. Use the AI assistant in each game's project for specific implementation help.
