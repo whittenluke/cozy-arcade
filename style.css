@@ -1,0 +1,145 @@
+:root {
+  --bg-color: #EBF0F2;
+  --text-primary: #3E4A59;
+  --text-muted: #70757A;
+  --accent: #D9A294;
+  --subtle-ui: #A3B5C0;
+  --font-main: 'IBM Plex Serif', Georgia, serif;
+}
+
+@font-face {
+  font-family: 'IBM Plex Serif';
+  src: url('fonts/IBMPlexSerif-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Serif';
+  src: url('fonts/IBMPlexSerif-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background-color: var(--bg-color);
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+main {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 0.25rem;
+  color: var(--text-primary);
+}
+
+h2:first-of-type {
+  margin-top: 2.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+h2+p {
+  color: var(--text-muted);
+}
+
+a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+h2 a {
+  color: var(--text-primary);
+}
+
+h2 a:hover {
+  color: var(--accent);
+}
+
+nav {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+nav a {
+  color: var(--accent);
+}
+
+footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--subtle-ui);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+footer a {
+  color: var(--accent);
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+
+  main {
+    padding: 3rem 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+}
