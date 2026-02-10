@@ -66,17 +66,20 @@ main {
   padding: 2rem 1.5rem;
 }
 
-h1 {
-  font-weight: 600;
-  font-size: 2.75rem;
-  margin-bottom: 0.5rem;
-  color: var(--text-primary);
-  text-align: center;
-  letter-spacing: 0.02em;
+main>header {
   animation: float 4s ease-in-out infinite;
 }
 
-h1+p {
+main>header h1 {
+  font-weight: 600;
+  font-size: 3rem;
+  margin-bottom: 0.25rem;
+  color: var(--text-primary);
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+main>header p {
   text-align: center;
 }
 
@@ -89,7 +92,7 @@ h2 {
 }
 
 h2:first-of-type {
-  margin-top: 3rem;
+  margin-top: 4.5rem;
 }
 
 main img {
@@ -97,7 +100,12 @@ main img {
   max-width: 100%;
   height: auto;
   margin: 0.5rem 0 0.75rem;
-  border-radius: 2px;
+  border-radius: 8px;
+  transition: opacity 0.2s ease;
+}
+
+main a:hover img {
+  opacity: 0.85;
 }
 
 p {
@@ -169,7 +177,7 @@ footer a {
     padding: 3rem 2rem;
   }
 
-  h1 {
-    font-size: 3.5rem;
+  main>header h1 {
+    font-size: 3.75rem;
   }
 }
