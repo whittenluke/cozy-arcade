@@ -2,5 +2,6 @@
   publish = "."
   command = ""
 
-[plugins]
-  disabled = ["@netlify/plugin-nextjs"]
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+  disabled = true
