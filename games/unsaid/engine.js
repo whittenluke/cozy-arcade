@@ -120,7 +120,7 @@ function initGame() {
   const length = pickRandomWordLength(currentTheme);
   targetWord = pickRandomWord(currentTheme, length).toUpperCase();
 
-  tokens = length * 3;
+  tokens = length * 4;
   discoveredIndices = [];
   isGameOver = false;
 
