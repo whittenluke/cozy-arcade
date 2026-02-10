@@ -92,6 +92,14 @@ h2:first-of-type {
   margin-top: 3rem;
 }
 
+main img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0.5rem 0 0.75rem;
+  border-radius: 2px;
+}
+
 p {
   margin-bottom: 1rem;
   color: var(--text-primary);
@@ -101,7 +109,8 @@ p:last-child {
   margin-bottom: 0;
 }
 
-h2+p {
+h2+p,
+main img+p {
   color: var(--text-muted);
   margin-top: 0.25rem;
   margin-bottom: 1.5rem;
