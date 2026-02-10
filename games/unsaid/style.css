@@ -4,6 +4,7 @@
   --text-muted: #6F6A63;
   --frame-line: #B8B1A7;
   --reveal: #8B5E52;
+  --terracotta: #D9A294;
 }
 
 * {
@@ -29,38 +30,61 @@ main {
 }
 
 h1 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  margin-bottom: 4rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--terracotta);
+  text-align: center;
 }
 
-.theme {
-  color: var(--text-muted);
-  margin-bottom: 0.25rem;
+.game-area {
+  position: relative;
+  margin-bottom: 3rem;
 }
 
 .tokens {
+  position: absolute;
+  top: -0.5rem;
+  right: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.theme {
+  text-align: center;
+  color: var(--text-muted);
   margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 400;
 }
 
 .slots {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  justify-content: center;
+  margin-bottom: 0;
 }
 
 .slot {
-  min-width: 2rem;
+  min-width: 2.5rem;
   text-align: center;
-  font-size: 1.5rem;
-  padding: 0.25rem 0;
+  font-size: 1.75rem;
+  padding: 0.35rem 0;
   border-bottom: 2px solid var(--frame-line);
   color: var(--text-primary);
+  background-color: rgba(217, 162, 148, 0.08);
 }
 
 .slot.revealed {
   color: var(--reveal);
   opacity: 0;
   animation: fade-in 0.3s ease forwards;
+}
+
+.slots.won .slot.revealed {
+  background-color: rgba(217, 162, 148, 0.15);
 }
 
 @keyframes fade-in {
@@ -71,22 +95,19 @@ h1 {
 #guess-form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-
-.hint {
-  color: var(--text-muted);
-  font-size: 0.9rem;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 #guess-input {
   border: 1px solid var(--frame-line);
-  padding: 0.35rem 0.5rem;
-  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 1.1rem;
   font-family: inherit;
-  background-color: transparent;
+  background-color: rgba(217, 162, 148, 0.05);
   color: var(--text-primary);
+  text-align: center;
+  min-width: 200px;
 }
 
 #guess-input:focus {
@@ -97,8 +118,8 @@ h1 {
 button[type="submit"] {
   border: 1px solid var(--frame-line);
   background-color: transparent;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.95rem;
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
   font-family: inherit;
   color: var(--text-primary);
   cursor: pointer;
@@ -115,8 +136,9 @@ button[type="submit"]:hover {
 
 .status {
   margin-top: 1.5rem;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text-muted);
+  text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -125,6 +147,26 @@ button[type="submit"]:hover {
   }
 
   h1 {
-    font-size: 2.25rem;
+    font-size: 3rem;
+    margin-bottom: 5rem;
+  }
+  
+  .theme {
+    font-size: 1.25rem;
+  }
+  
+  .slot {
+    min-width: 3rem;
+    font-size: 2rem;
+  }
+  
+  #guess-input {
+    font-size: 1.2rem;
+    min-width: 240px;
+  }
+  
+  button[type="submit"] {
+    font-size: 1.1rem;
+    padding: 0.5rem 1.25rem;
   }
 }

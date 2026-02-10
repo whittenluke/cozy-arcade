@@ -34,20 +34,21 @@ function renderSlots(length) {
   }
 }
 
-function updateTokens() {
-  const tokensEl = document.getElementById("tokens");
-  tokensEl.textContent = `Tokens: ${tokens}`;
-}
-
 function updateTheme(theme) {
   const themeEl = document.getElementById("theme");
-  themeEl.textContent = theme ? `Theme: ${theme}` : "";
+  if (theme) {
+    const themeLower = theme.charAt(0) + theme.slice(1).toLowerCase();
+    themeEl.textContent = themeLower;
+  } else {
+    themeEl.textContent = "";
+  }
 }
 
-function updateHint(length) {
-  const hintEl = document.getElementById("hint");
-  hintEl.textContent = length ? `Type a word of ${length} letters.` : "";
+function updateTokens(tokens) {
+  const tokensEl = document.getElementById("tokens");
+  tokensEl.textContent = `${tokens}`;
 }
+
 
 function setStatus(message) {
   const statusEl = document.getElementById("status");
@@ -96,11 +97,13 @@ function handleSubmit(event) {
   }
 
   newlyDiscovered.forEach(revealLetterAt);
-  updateTokens();
+  updateTokens(tokens);
 
   if (discoveredIndices.length === targetWord.length) {
     isGameOver = true;
     setStatus("The word is said.");
+    const slotsContainer = document.getElementById("slots");
+    slotsContainer.classList.add("won");
   } else if (tokens <= 0) {
     isGameOver = true;
     setStatus("Resources exhausted.");
@@ -122,10 +125,12 @@ function initGame() {
   isGameOver = false;
 
   updateTheme(currentTheme);
-  updateTokens();
-  updateHint(length);
+  updateTokens(tokens);
   renderSlots(length);
   setStatus("");
+
+  const slotsContainer = document.getElementById("slots");
+  slotsContainer.classList.remove("won");
 
   const form = document.getElementById("guess-form");
   form.addEventListener("submit", handleSubmit);

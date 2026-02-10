@@ -9,13 +9,14 @@
 <body>
   <main>
     <h1>Unsaid</h1>
-    <p id="theme" class="theme"></p>
-    <p id="tokens" class="tokens"></p>
-
-    <section id="slots" class="slots"></section>
+    
+    <div class="game-area">
+      <p id="tokens" class="tokens"></p>
+      <p id="theme" class="theme"></p>
+      <section id="slots" class="slots"></section>
+    </div>
 
     <form id="guess-form" autocomplete="off">
-      <label for="guess-input" id="hint" class="hint"></label>
       <input id="guess-input" type="text" inputmode="latin" spellcheck="false" autocomplete="off" />
       <button type="submit">Commit</button>
     </form>

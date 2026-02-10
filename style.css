@@ -48,6 +48,18 @@ body {
   }
 }
 
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
 main {
   max-width: 600px;
   margin: 0 auto;
@@ -56,9 +68,16 @@ main {
 
 h1 {
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 2.75rem;
   margin-bottom: 0.5rem;
   color: var(--text-primary);
+  text-align: center;
+  letter-spacing: 0.02em;
+  animation: float 4s ease-in-out infinite;
+}
+
+h1+p {
+  text-align: center;
 }
 
 h2 {
@@ -70,7 +89,7 @@ h2 {
 }
 
 h2:first-of-type {
-  margin-top: 2.5rem;
+  margin-top: 3rem;
 }
 
 p {
@@ -84,6 +103,8 @@ p:last-child {
 
 h2+p {
   color: var(--text-muted);
+  margin-top: 0.25rem;
+  margin-bottom: 1.5rem;
 }
 
 a {
@@ -140,6 +161,6 @@ footer a {
   }
 
   h1 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
   }
 }
