@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unsaid</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Unsaid</h1>
+    <p id="theme" class="theme"></p>
+    <p id="tokens" class="tokens"></p>
+
+    <section id="slots" class="slots"></section>
+
+    <form id="guess-form" autocomplete="off">
+      <label for="guess-input" id="hint" class="hint"></label>
+      <input id="guess-input" type="text" inputmode="latin" spellcheck="false" autocomplete="off" />
+      <button type="submit">Commit</button>
+    </form>
+
+    <p id="status" class="status"></p>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="engine.js"></script>
+</body>
+</html>

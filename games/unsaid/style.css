@@ -1,0 +1,130 @@
+:root {
+  --bg: #E6DED3;
+  --text-primary: #2E2B28;
+  --text-muted: #6F6A63;
+  --frame-line: #B8B1A7;
+  --reveal: #8B5E52;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: "Times New Roman", Georgia, serif;
+}
+
+main {
+  max-width: 520px;
+  width: 100%;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.theme {
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.tokens {
+  margin-bottom: 1.5rem;
+}
+
+.slots {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.slot {
+  min-width: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid var(--frame-line);
+  color: var(--text-primary);
+}
+
+.slot.revealed {
+  color: var(--reveal);
+  opacity: 0;
+  animation: fade-in 0.3s ease forwards;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#guess-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.hint {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+#guess-input {
+  border: 1px solid var(--frame-line);
+  padding: 0.35rem 0.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: transparent;
+  color: var(--text-primary);
+}
+
+#guess-input:focus {
+  outline: 2px solid var(--reveal);
+  outline-offset: 2px;
+}
+
+button[type="submit"] {
+  border: 1px solid var(--frame-line);
+  background-color: transparent;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+button[type="submit"]:focus {
+  outline: 2px solid var(--reveal);
+  outline-offset: 2px;
+}
+
+button[type="submit"]:hover {
+  border-color: var(--reveal);
+}
+
+.status {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+@media (min-width: 768px) {
+  main {
+    padding: 3rem 2rem 3.5rem;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+}
