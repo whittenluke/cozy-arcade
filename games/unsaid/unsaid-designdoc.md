@@ -17,13 +17,13 @@ data.js: The dictionary of themes and words.
 3. Visual Identity (Earthy Mist Palette)
 Use the following CSS variables for all styling:
 
---bg: #DAE2E0; (Primary background — Mist)
+--bg: #F0F4F5; (Primary background)
 
 --text-primary: #2A3331; (Active text/Input — Deep Forest)
 
---text-muted: #6C7A77; (Labels/Secondary info — Juniper)
+--text-muted: #4F5B58; (Labels/Secondary info — tuned for contrast on light bg)
 
---frame-line: #B5C2BF; (Empty slots — Pebble)
+--frame-line: #8B9996; (Empty slots — tuned so borders visible on light bg)
 
 --reveal: #B3705F; (Correctly guessed letters — Muted Terracotta)
 

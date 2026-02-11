@@ -57,7 +57,6 @@ const WORD_LIBRARY = {
   "THEATER": {
     4: ["PLAY", "CAST", "PROP", "SHOW", "ROLE", "PLOT", "EXIT", "LINE", "PART", "STAR", "SEAT", "CREW"],
     5: ["STAGE", "ACTOR", "DRAMA", "SCENE", "LIGHT", "DANCE", "LOBBY", "MUSIC", "OPERA"],
-    6: ["COMEDY", "SCRIPT", "DIRECT", "TICKET", "SCREEN", "CHORUS", "DIALOG", "ENCORE"]]
-  },
-
+    6: ["COMEDY", "SCRIPT", "DIRECT", "TICKET", "SCREEN", "CHORUS", "DIALOG", "ENCORE"]
+  }
 };
