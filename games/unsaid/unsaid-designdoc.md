@@ -8,24 +8,24 @@ All files reside in games/unsaid/:
 
 index.html: Entry point.
 
-style.css: Custom game styling using the Parchment Palette.
+style.css: Custom game styling using the Earthy Mist Palette.
 
 engine.js: Game logic and state management.
 
 data.js: The dictionary of themes and words.
 
-3. Visual Identity (Parchment Palette)
+3. Visual Identity (Earthy Mist Palette)
 Use the following CSS variables for all styling:
 
---bg: #E6DED3; (Primary background)
+--bg: #DAE2E0; (Primary background — Mist)
 
---text-primary: #2E2B28; (Active text/Input)
+--text-primary: #2A3331; (Active text/Input — Deep Forest)
 
---text-muted: #6F6A63; (Labels/Secondary info)
+--text-muted: #6C7A77; (Labels/Secondary info — Juniper)
 
---frame-line: #B8B1A7; (Empty slots)
+--frame-line: #B5C2BF; (Empty slots — Pebble)
 
---reveal: #8B5E52; (Correctly guessed letters)
+--reveal: #B3705F; (Correctly guessed letters — Muted Terracotta)
 
 4. Game Logic & Mechanics
 State Management
