@@ -8,24 +8,24 @@ All files reside in games/unsaid/:
 
 index.html: Entry point.
 
-style.css: Custom game styling using the Earthy Mist Palette.
+style.css: Custom game styling using the Deep Juniper (dark focus-mode) palette.
 
 engine.js: Game logic and state management.
 
 data.js: The dictionary of themes and words.
 
-3. Visual Identity (Earthy Mist Palette)
+3. Visual Identity (Deep Juniper Palette)
 Use the following CSS variables for all styling:
 
---bg: #F0F4F5; (Primary background)
+--bg: #2D3A3A; (Deep Juniper — primary background, dark focus-mode)
 
---text-primary: #2A3331; (Active text/Input — Deep Forest)
+--text-primary: #EBF0F2; (Sky White — active text/input, inverse of Cozy Arcade bg)
 
---text-muted: #4F5B58; (Labels/Secondary info — tuned for contrast on light bg)
+--text-muted: #94A3A2; (Mist — labels e.g. theme name, recedes so words pop)
 
---frame-line: #8B9996; (Empty slots — tuned so borders visible on light bg)
+--frame-line: #455453; (Slate — borders for empty slots)
 
---reveal: #B3705F; (Correctly guessed letters — Muted Terracotta)
+--reveal: #E28D77; (Warm Terracotta — correctly guessed letters)
 
 4. Game Logic & Mechanics
 State Management

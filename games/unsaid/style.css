@@ -1,10 +1,10 @@
 :root {
-  /* Earthy Mist Palette */
-  --bg: #F0F4F5;            /* Primary background */
-  --text-primary: #2A3331;   /* Active text/Input (Deep Forest) */
-  --text-muted: #4F5B58;     /* Labels/Secondary info — darker for contrast on light bg */
-  --frame-line: #8B9996;     /* Empty slots — darker so borders visible on light bg */
-  --reveal: #B3705F;         /* Correctly guessed letters (Muted Terracotta) */
+  /* Deep Juniper — dark focus-mode palette */
+  --bg: #2D3A3A;            /* Deep Juniper — primary background */
+  --text-primary: #EBF0F2;  /* Sky White — active text/input */
+  --text-muted: #94A3A2;     /* Mist — labels, recedes so words pop */
+  --frame-line: #455453;     /* Slate — empty slot borders */
+  --reveal: #E28D77;         /* Warm Terracotta — correctly guessed letters */
 }
 
 * {
@@ -87,7 +87,7 @@ h1 {
 }
 
 .slots.won .slot.revealed {
-  background-color: rgba(179, 112, 95, 0.12);
+  background-color: rgba(226, 141, 119, 0.12);
 }
 
 @keyframes fade-in {
@@ -107,7 +107,7 @@ h1 {
   padding: 0.5rem 0.75rem;
   font-size: 1.1rem;
   font-family: inherit;
-  background-color: rgba(179, 112, 95, 0.05);
+  background-color: rgba(226, 141, 119, 0.05);
   color: var(--text-primary);
   text-align: center;
   min-width: 200px;

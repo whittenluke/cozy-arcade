@@ -67,7 +67,7 @@ main {
 }
 
 main>header {
-  animation: float 4s ease-in-out infinite;
+  animation: float 2.5s ease-in-out infinite;
 }
 
 main>header h1 {
