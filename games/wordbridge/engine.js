@@ -146,8 +146,7 @@ function validatePlacement(word, startRow, startCol, horizontal) {
       r--;
     }
   }
-  const existingStart = getCell(startRow, startCol);
-  const wordPart = (existingStart != null ? existingStart : "") + w;
+  const wordPart = w;
   if (prefix.length > 0) {
     if (horizontal) startCol -= prefix.length;
     else startRow -= prefix.length;
