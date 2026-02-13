@@ -273,6 +273,19 @@ function isValidWord(word) {
 
 ## 6. Polish & Juice
 
+### 6.0 Colour palette
+
+Word Bridge uses its own palette (distinct from other Cozy Arcade games). CSS custom properties in `style.css`:
+
+| Token | Hex | Use |
+|-------|-----|-----|
+| `--bg` | #F7F3EE | Page and board background |
+| `--text-primary` | #2C2926 | Primary text |
+| `--text-muted` | #A89F94 | Secondary text, labels |
+| `--frame-line` | #DDD5D0 | Borders, dividers |
+| `--accent` | #5E8DA2 | Links, buttons, highlights, placed letters |
+| `--start-finish` | #E8E4E0 | Start/Finish zone cell background |
+
 ### 6.1 Visual Polish
 - Smooth tile animations (slide into place, 200ms)
 - Particle effects when word is successfully placed
