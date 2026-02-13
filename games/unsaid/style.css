@@ -1,10 +1,9 @@
 :root {
-  /* Soft Sage White palette */
-  --bg: #F4F7F5;            /* Soft Sage White — lighter, slightly greener than homepage */
-  --accent-deep: #3A4D4A;   /* Dark Forest — text and letter box outlines, high contrast */
-  --ui-surface: #D1D9D7;     /* Soft Pebble — buttons, subtle layer over background */
-  --reveal: #E28D77;        /* Warm Clay — filled letters, successful guesses */
-  --muted: #8AA19E;         /* Silver Leaf — status/topic text, recedes */
+  --bg: #F4EFE6;
+  --text: #3E3A36;
+  --accent: #C26D52;
+  --accent-secondary: #6F8895;
+  --surface: #D5C6AF;
 }
 
 * {
@@ -19,7 +18,7 @@ body {
   align-items: flex-start;
   justify-content: center;
   background-color: var(--bg);
-  color: var(--accent-deep);
+  color: var(--text);
   font-family: "Times New Roman", Georgia, serif;
 }
 
@@ -38,7 +37,7 @@ main {
   margin: 0;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: var(--reveal);
+  color: var(--accent);
   text-align: center;
 }
 
@@ -58,15 +57,15 @@ main {
   font-family: inherit;
   font-size: 0.85rem;
   background: transparent;
-  border: 1px solid var(--accent-deep);
+  border: 1px solid var(--text);
   border-radius: 6px;
-  color: var(--muted);
+  color: var(--accent-secondary);
   cursor: pointer;
 }
 
 .rules-btn:hover {
-  color: var(--reveal);
-  border-color: var(--reveal);
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 .rules-dialog {
@@ -77,20 +76,20 @@ main {
   transform: translate(-50%, -50%);
   max-width: 360px;
   padding: 1.25rem;
-  border: 1px solid var(--accent-deep);
+  border: 1px solid var(--text);
   background: var(--bg);
-  color: var(--accent-deep);
+  color: var(--text);
   font-family: inherit;
   border-radius: 8px;
 }
 
 .rules-dialog::backdrop {
-  background: rgba(58, 77, 74, 0.4);
+  background: rgba(62, 58, 54, 0.4);
 }
 
 .rules-dialog h2 {
   font-size: 1.25rem;
-  color: var(--reveal);
+  color: var(--accent);
   margin-bottom: 0.75rem;
 }
 
@@ -107,16 +106,16 @@ main {
   padding: 0.25rem 0.5rem;
   font-family: inherit;
   font-size: 0.8rem;
-  background: var(--ui-surface);
-  border: 1px solid var(--accent-deep);
+  background: var(--surface);
+  border: 1px solid var(--text);
   border-radius: 6px;
-  color: var(--accent-deep);
+  color: var(--text);
   cursor: pointer;
 }
 
 .dialog-close:hover {
-  color: var(--reveal);
-  border-color: var(--reveal);
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 .game-area {
@@ -125,14 +124,14 @@ main {
 }
 
 .tokens {
-  color: var(--muted);
+  color: var(--accent-secondary);
   font-size: 0.95rem;
   margin: 0;
 }
 
 .theme {
   text-align: center;
-  color: var(--muted);
+  color: var(--accent-secondary);
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
   font-weight: 400;
@@ -154,18 +153,18 @@ main {
   justify-content: center;
   font-size: 1.75rem;
   padding: 0;
-  border-bottom: 2px solid var(--accent-deep);
-  color: var(--accent-deep);
+  border-bottom: 2px solid var(--text);
+  color: var(--text);
 }
 
 .slot.revealed {
-  color: var(--reveal);
+  color: var(--accent);
   opacity: 0;
   animation: fade-in 0.3s ease forwards;
 }
 
 .slots.won .slot.revealed {
-  background-color: rgba(226, 141, 119, 0.12);
+  background-color: rgba(194, 109, 82, 0.12);
 }
 
 @keyframes fade-in {
@@ -181,46 +180,46 @@ main {
 }
 
 #guess-input {
-  border: 1px solid var(--accent-deep);
+  border: 1px solid var(--text);
   border-radius: 6px;
   padding: 0.5rem 0.75rem;
   font-size: 1.1rem;
   font-family: inherit;
   background-color: transparent;
-  color: var(--accent-deep);
+  color: var(--text);
   text-align: center;
   min-width: 200px;
 }
 
 #guess-input:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--reveal);
+  box-shadow: 0 0 0 2px var(--accent);
 }
 
 button[type="submit"] {
-  border: 1px solid var(--accent-deep);
+  border: 1px solid var(--text);
   border-radius: 6px;
-  background-color: var(--ui-surface);
+  background-color: var(--surface);
   padding: 0.4rem 1rem;
   font-size: 1rem;
   font-family: inherit;
-  color: var(--accent-deep);
+  color: var(--text);
   cursor: pointer;
 }
 
 button[type="submit"]:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--reveal);
+  box-shadow: 0 0 0 2px var(--accent);
 }
 
 button[type="submit"]:hover {
-  border-color: var(--reveal);
+  border-color: var(--accent);
 }
 
 .status {
   margin-top: 1.5rem;
   font-size: 1rem;
-  color: var(--muted);
+  color: var(--accent-secondary);
   text-align: center;
 }
 

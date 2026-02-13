@@ -8,24 +8,24 @@ All files reside in games/unsaid/:
 
 index.html: Entry point.
 
-style.css: Custom game styling using the Soft Sage White palette.
+style.css: Custom game styling using the Unsaid palette (warm neutrals + accent).
 
 engine.js: Game logic and state management.
 
 data.js: The dictionary of themes and words.
 
-3. Visual Identity (Soft Sage White Palette)
+3. Visual Identity
 Use the following CSS variables for all styling:
 
---bg: #F4F7F5; (Soft Sage White — lighter, slightly greener than homepage; matches Cozy Arcade without being identical)
+--bg: #F4EFE6; (background)
 
---accent-deep: #3A4D4A; (Dark Forest — all text and main letter box outlines; high contrast, very readable)
+--text: #3E3A36; (primary text and letter box outlines)
 
---ui-surface: #D1D9D7; (Soft Pebble — buttons or unselected tiles; subtle layer over background)
+--accent: #C26D52; (filled letters, successful guesses, focus, title, hover)
 
---reveal: #E28D77; (Warm Clay — filled-in letters, successful guesses; keep as the star of the show)
+--accent-secondary: #6F8895; (tokens, theme, status — recedes)
 
---muted: #8AA19E; (Silver Leaf — "The word is said," "Topic: Music"; recedes so gameplay stays front-and-center)
+--surface: #D5C6AF; (buttons, dialog close — subtle layer)
 
 4. Game Logic & Mechanics
 State Management
@@ -46,7 +46,7 @@ If Guess[index] === TargetWord[index] AND index is not already discovered:
 
 Add index to DiscoveredIndices.
 
-Update UI to display the letter in the slot using --reveal color.
+Update UI to display the letter in the slot using --accent color.
 
 If Guess[index] !== TargetWord[index] AND index is not already discovered:
 
@@ -75,7 +75,7 @@ No Redundant Penalties: If a player has already discovered the letter at index 0
 
 Input Handling: Automatically convert input to uppercase. Clear input field after every "Commit."
 
-Tactile UI: * Empty slots should be simple bottom-borders (--frame-line).
+Tactile UI: * Empty slots should be simple bottom-borders (--text).
 
 Locked letters should transition in with a subtle opacity fade.
 

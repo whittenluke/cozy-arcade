@@ -155,6 +155,7 @@ main>header p {
   overflow: hidden;
   border-radius: 8px;
   margin-bottom: 0.75rem;
+  border: 1px solid var(--subtle-ui);
 }
 
 .game-card .card-image-wrap img {
