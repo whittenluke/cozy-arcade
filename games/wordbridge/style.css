@@ -1,0 +1,300 @@
+:root {
+  --bg: #2D3A3A;
+  --text-primary: #EBF0F2;
+  --text-muted: #94A3A2;
+  --frame-line: #455453;
+  --accent: #E28D77;
+  --start-finish: #5A6B6B;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Georgia, "Times New Roman", serif;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-size: 16px;
+}
+
+main {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  padding-bottom: 14rem;
+}
+
+.tile-rack {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg);
+  border-top: 1px solid var(--frame-line);
+  padding: 0.75rem 1.5rem 1rem;
+  max-width: 560px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.tile-rack .controls {
+  margin-bottom: 0.5rem;
+}
+
+.tile-rack .controls-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tile-rack .controls-row .action-btn:first-child {
+  flex-shrink: 0;
+}
+
+.tile-rack .controls-spacer {
+  flex: 1;
+  min-width: 0;
+}
+
+.tile-rack .controls-center {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: visible;
+}
+
+.tile-rack .controls-row .direction-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: -1.2rem;
+}
+
+.tile-rack .controls-row .replace-btn {
+  flex-shrink: 0;
+}
+
+.tile-rack .message {
+  min-height: 1.25rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+}
+
+.back-link {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.back-link a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.back-link a:hover {
+  color: var(--accent);
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.restart-btn {
+  padding: 0.25rem 0.5rem;
+  font-family: inherit;
+  font-size: 0.8rem;
+  background: transparent;
+  border: 1px solid var(--frame-line);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.restart-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.board {
+  display: grid;
+  gap: 0;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--frame-line);
+  background: var(--bg);
+}
+
+.cell {
+  width: 1.75rem;
+  height: 1.75rem;
+  min-width: 1.75rem;
+  min-height: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  border: 1px solid var(--frame-line);
+  background: var(--bg);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.cell.start,
+.cell.finish {
+  background: var(--start-finish);
+}
+
+.cell.selected {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+.cell.filled {
+  background: rgba(226, 141, 119, 0.15);
+  color: var(--accent);
+}
+
+.cell.preview {
+  color: var(--accent);
+  opacity: 0.75;
+  background: rgba(226, 141, 119, 0.12);
+  border-style: dashed;
+}
+
+.cell:hover:not(.start):not(.finish) {
+  background: rgba(69, 84, 83, 0.6);
+}
+
+.dir-btn {
+  padding: 0.35rem 0.6rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  background: transparent;
+  border: 1px solid var(--frame-line);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.dir-btn[aria-pressed="true"] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.dir-btn:hover {
+  border-color: var(--accent);
+}
+
+.action-btn,
+.tile-rack .replace-btn {
+  padding: 0.4rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background: transparent;
+  border: 1px solid var(--frame-line);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.action-btn:hover,
+.tile-rack .replace-btn:not(:disabled):hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tile-rack .replace-btn {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.tile-rack .replace-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.tile-rack .replace-btn .replace-count {
+  margin-left: 0.2em;
+  font-size: 0.95em;
+  opacity: 0.9;
+}
+
+.tile-rack.replace-mode .tile {
+  border-style: dashed;
+}
+
+.hand-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.hand {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.tile {
+  width: 2.25rem;
+  height: 2.25rem;
+  min-width: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 1px solid var(--frame-line);
+  background: rgba(226, 141, 119, 0.08);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.tile:hover {
+  border-color: var(--accent);
+  background: rgba(226, 141, 119, 0.15);
+}
+
+.tile.selected {
+  border-color: var(--accent);
+  background: rgba(226, 141, 119, 0.2);
+  color: var(--accent);
+}
+
+.tile.plank {
+  font-size: 0.85rem;
+}
+
+@media (min-width: 768px) {
+  .cell {
+    width: 2rem;
+    height: 2rem;
+    min-width: 2rem;
+    min-height: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .tile {
+    width: 2.5rem;
+    height: 2.5rem;
+    min-width: 2.5rem;
+    font-size: 1.2rem;
+  }
+}

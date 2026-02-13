@@ -31,7 +31,7 @@ Use the following CSS variables for all styling:
 State Management
 TargetWord: String (4, 5, or 6 characters).
 
-Tokens: Integer (Calculated as WordLength * 3).
+Tokens: Integer (Calculated as WordLength * 4).
 
 DiscoveredIndices: Array of integers tracking which positions have been revealed.
 

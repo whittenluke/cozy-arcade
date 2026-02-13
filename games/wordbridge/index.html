@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Bridge</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main>
+    <h1>Word Bridge</h1>
+    <p class="back-link"><a href="../../index.html">Cozy Arcade</a></p>
+
+    <div class="game-header">
+      <button type="button" id="btn-restart" class="restart-btn">Restart</button>
+      <span id="status" class="status"></span>
+      <span id="words-used" class="words-used">Words: 0</span>
+    </div>
+
+    <div id="board" class="board" role="grid" aria-label="Canyon grid"></div>
+  </main>
+
+  <div class="tile-rack">
+    <div class="controls">
+      <div class="controls-row">
+        <button type="button" id="btn-clear" class="action-btn">Clear</button>
+        <div class="controls-spacer" aria-hidden="true"></div>
+        <div class="controls-center">
+          <div class="direction-group">
+            <button type="button" id="dir-h" class="dir-btn" aria-pressed="true" title="Across">→</button>
+            <button type="button" id="dir-v" class="dir-btn" aria-pressed="false" title="Down">↓</button>
+          </div>
+          <button type="button" id="btn-place" class="action-btn">Place</button>
+        </div>
+        <div class="controls-spacer" aria-hidden="true"></div>
+        <button type="button" id="btn-replace" class="replace-btn" title="Replace a tile"><span
+            class="replace-btn-label">Replace</span> <span id="replace-count" class="replace-count"
+            aria-live="polite">3</span></button>
+      </div>
+    </div>
+    <p id="message" class="message"></p>
+    <div class="hand-label">Your tiles</div>
+    <div id="hand" class="hand" role="group" aria-label="Letter tiles"></div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="engine.js"></script>
+</body>
+
+</html>
