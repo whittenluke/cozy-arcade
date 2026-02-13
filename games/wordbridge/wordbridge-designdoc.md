@@ -279,13 +279,13 @@ Word Bridge uses its own palette (distinct from other Cozy Arcade games). CSS cu
 
 | Token | Hex | Use |
 |-------|-----|-----|
-| `--bg` | #F1F2EF | Page and board background |
-| `--text-primary` | #2E3A44 | Primary text |
-| `--text-muted` | #6B756F | Secondary text, labels |
-| `--frame-line` | #BEC5C1 | Surface/grid — borders, dividers, grid lines |
-| `--accent` | #4C7A9F | Primary accent — links, buttons, highlights, placed letters |
-| `--accent-secondary` | #C9A86A | Secondary accent — soft brass highlight |
-| `--start-finish` | #E2E5E3 | Start/Finish zone cell background |
+| `--bg` | #F6F1E8 | Page and board background |
+| `--text-primary` | #3E3A36 | Primary text |
+| `--text-muted` | #6F8895 | Secondary text, labels |
+| `--frame-line` | #D5CFC4 | Borders, dividers, grid lines |
+| `--accent` | #C26D52 | Primary accent — links, buttons, highlights, placed letters |
+| `--accent-secondary` | #6F8895 | Secondary accent |
+| `--start-finish` | #E7E1D6 | Start/Finish zone cell background |
 
 ### 6.1 Visual Polish
 - Smooth tile animations (slide into place, 200ms)

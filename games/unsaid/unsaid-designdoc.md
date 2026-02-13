@@ -17,7 +17,7 @@ data.js: The dictionary of themes and words.
 3. Visual Identity
 Use the following CSS variables for all styling:
 
---bg: #F4EFE6; (background)
+--bg: #F6F1E8; (background)
 
 --text: #3E3A36; (primary text and letter box outlines)
 
@@ -25,7 +25,7 @@ Use the following CSS variables for all styling:
 
 --accent-secondary: #6F8895; (tokens, theme, status — recedes)
 
---surface: #D5C6AF; (buttons, dialog close — subtle layer)
+--surface: #E7E1D6; (buttons, dialog close — subtle layer)
 
 4. Game Logic & Mechanics
 State Management

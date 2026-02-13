@@ -1,11 +1,11 @@
 :root {
-  --bg: #F1F2EF;
-  --text-primary: #2E3A44;
-  --text-muted: #6B756F;
-  --frame-line: #BEC5C1;
-  --accent: #4C7A9F;
-  --accent-secondary: #C9A86A;
-  --start-finish: #E2E5E3;
+  --bg: #F6F1E8;
+  --text-primary: #3E3A36;
+  --text-muted: #6F8895;
+  --frame-line: #D5CFC4;
+  --accent: #C26D52;
+  --accent-secondary: #6F8895;
+  --start-finish: #E7E1D6;
 }
 
 * {
@@ -247,21 +247,21 @@ h1 {
 }
 
 .cell.filled {
-  background: rgba(76, 122, 159, 0.15);
+  background: rgba(194, 109, 82, 0.15);
   color: var(--accent);
 }
 
 .cell.preview {
   color: var(--accent);
   opacity: 0.75;
-  background: rgba(76, 122, 159, 0.12);
+  background: rgba(194, 109, 82, 0.12);
   border-style: dashed;
 }
 
 .cell.next-slot {
-  background: rgba(76, 122, 159, 0.35);
-  border: 1px dashed rgba(76, 122, 159, 0.8);
-  box-shadow: inset 0 0 0 1px rgba(76, 122, 159, 0.25);
+  background: rgba(194, 109, 82, 0.35);
+  border: 1px dashed rgba(194, 109, 82, 0.8);
+  box-shadow: inset 0 0 0 1px rgba(194, 109, 82, 0.25);
 }
 
 .cell:hover:not(.start):not(.finish) {
@@ -351,19 +351,19 @@ h1 {
   font-size: 1.1rem;
   font-weight: 600;
   border: 1px solid var(--frame-line);
-  background: rgba(76, 122, 159, 0.08);
+  background: rgba(194, 109, 82, 0.08);
   color: var(--text-primary);
   cursor: pointer;
 }
 
 .tile:hover {
   border-color: var(--accent);
-  background: rgba(76, 122, 159, 0.15);
+  background: rgba(194, 109, 82, 0.15);
 }
 
 .tile.selected {
   border-color: var(--accent);
-  background: rgba(76, 122, 159, 0.2);
+  background: rgba(194, 109, 82, 0.2);
   color: var(--accent);
 }
 

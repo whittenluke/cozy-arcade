@@ -1,9 +1,9 @@
 :root {
-  --bg: #F4EFE6;
+  --bg: #F6F1E8;
   --text: #3E3A36;
   --accent: #C26D52;
   --accent-secondary: #6F8895;
-  --surface: #D5C6AF;
+  --surface: #E7E1D6;
 }
 
 * {
@@ -26,6 +26,28 @@ main {
   max-width: 520px;
   width: 100%;
   padding: 2.5rem 1.5rem 3rem;
+}
+
+.top-nav {
+  margin-bottom: 0.75rem;
+}
+
+.game-panel {
+  background: rgba(111, 136, 149, 0.05);
+  border: 1px solid rgba(111, 136, 149, 0.14);
+  border-radius: 12px;
+  padding: 2rem 1.5rem 2.5rem;
+}
+
+.back-btn {
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--accent-secondary);
+  text-decoration: none;
+}
+
+.back-btn:hover {
+  color: var(--accent);
 }
 
 .game-header {
@@ -57,10 +79,11 @@ main {
   font-family: inherit;
   font-size: 0.85rem;
   background: transparent;
-  border: 1px solid var(--text);
+  border: 1px solid rgba(111, 136, 149, 0.5);
   border-radius: 6px;
   color: var(--accent-secondary);
   cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .rules-btn:hover {
@@ -107,10 +130,11 @@ main {
   font-family: inherit;
   font-size: 0.8rem;
   background: var(--surface);
-  border: 1px solid var(--text);
+  border: 1px solid rgba(111, 136, 149, 0.5);
   border-radius: 6px;
   color: var(--text);
   cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .dialog-close:hover {
@@ -203,7 +227,7 @@ main {
 }
 
 button[type="submit"] {
-  border: 1px solid var(--text);
+  border: 1px solid rgba(111, 136, 149, 0.5);
   border-radius: 6px;
   background-color: var(--surface);
   padding: 0.4rem 1rem;
@@ -211,11 +235,13 @@ button[type="submit"] {
   font-family: inherit;
   color: var(--text);
   cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
 button[type="submit"]:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--accent);
+  border-color: var(--accent-secondary);
+  box-shadow: 0 0 12px rgba(111, 136, 149, 0.35);
 }
 
 button[type="submit"]:hover {
