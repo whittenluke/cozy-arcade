@@ -168,8 +168,13 @@ main {
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 #guess-form {
@@ -180,7 +185,7 @@ main {
 }
 
 #guess-input {
-  border: 1px solid var(--text);
+  border: 2px solid rgba(111, 136, 149, 0.5);
   border-radius: 6px;
   padding: 0.5rem 0.75rem;
   font-size: 1.1rem;
@@ -193,7 +198,8 @@ main {
 
 #guess-input:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--accent);
+  border-color: var(--accent-secondary);
+  box-shadow: 0 0 12px rgba(111, 136, 149, 0.4);
 }
 
 button[type="submit"] {
@@ -235,23 +241,23 @@ button[type="submit"]:hover {
   .game-header h1 {
     font-size: 3rem;
   }
-  
+
   .theme {
     font-size: 1.25rem;
   }
-  
+
   .slot {
     width: 3rem;
     min-width: 3rem;
     height: 2.75rem;
     font-size: 2rem;
   }
-  
+
   #guess-input {
     font-size: 1.2rem;
     min-width: 240px;
   }
-  
+
   button[type="submit"] {
     font-size: 1.1rem;
     padding: 0.5rem 1.25rem;
