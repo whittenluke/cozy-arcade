@@ -133,10 +133,32 @@ h1 {
   border-color: var(--accent);
 }
 
+.board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.board-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0.85;
+}
+
+.board-label--start {
+  margin-bottom: 0.35rem;
+}
+
+.board-label--end {
+  margin-top: 0.35rem;
+}
+
 .board {
   display: grid;
   gap: 0;
-  margin-bottom: 1.5rem;
   border: 1px solid var(--frame-line);
   background: var(--bg);
 }
