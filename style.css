@@ -61,7 +61,7 @@ body {
 }
 
 main {
-  max-width: 600px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
 }
@@ -83,29 +83,106 @@ main>header p {
   text-align: center;
 }
 
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+
+@media (max-width: 560px) {
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.game-card {
+  position: relative;
+  background: #F2F5F6;
+  border-radius: 10px;
+  padding: 0;
+  box-shadow: 0 4px 20px rgba(62, 74, 89, 0.07);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.game-card:hover {
+  box-shadow: 0 8px 28px rgba(62, 74, 89, 0.1);
+  transform: translateY(-2px);
+}
+
+.game-card .card-link {
+  display: block;
+  padding: 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 10px;
+  position: relative;
+}
+
+.game-card .card-link:hover {
+  color: inherit;
+}
+
+.game-card .card-play {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  opacity: 0.85;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.game-card .card-link:hover .card-play {
+  color: var(--accent);
+  opacity: 1;
+}
+
+.game-card .card-link h2 {
+  font-weight: 600;
+  font-size: 1.35rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  padding-right: 2.5rem;
+}
+
+.game-card .card-image-wrap {
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+}
+
+.game-card .card-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  transition: opacity 0.2s ease;
+}
+
+.game-card .card-link:hover .card-image-wrap img {
+  opacity: 0.85;
+}
+
+.game-card .card-link p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
 h2 {
   font-weight: 600;
   font-size: 1.5rem;
   margin-top: 2rem;
   margin-bottom: 0.25rem;
   color: var(--text-primary);
-}
-
-h2:first-of-type {
-  margin-top: 4.5rem;
-}
-
-main img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 0.5rem 0 0.75rem;
-  border-radius: 8px;
-  transition: opacity 0.2s ease;
-}
-
-main a:hover img {
-  opacity: 0.85;
 }
 
 p {
@@ -115,13 +192,6 @@ p {
 
 p:last-child {
   margin-bottom: 0;
-}
-
-h2+p,
-main img+p {
-  color: var(--text-muted);
-  margin-top: 0.25rem;
-  margin-bottom: 1.5rem;
 }
 
 a {

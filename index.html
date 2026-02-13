@@ -17,15 +17,29 @@
       <p>Small calm games you can play in the browser.</p>
     </header>
 
-    <h2><a href="games/unsaid/">Unsaid</a></h2>
-    <a href="games/unsaid/"><img src="games/unsaid/assets/unsaid-preview.svg" alt="Preview of Unsaid." width="600"
-        height="338"></a>
-    <p>A word game about finding what’s already there, and making sure it doesn't go unsaid.</p>
-
-    <h2><a href="games/wordbridge/">Word Bridge</a></h2>
-    <a href="games/wordbridge/"><img src="games/wordbridge/assets/wordbridge-preview.svg" alt="Preview of Word Bridge."
-        width="600" height="338"></a>
-    <p>Place tiles to form words. Connect words to form a chain from start to end.</p>
+    <section class="game-grid" aria-label="Games">
+      <article class="game-card">
+        <a href="games/unsaid/" class="card-link" aria-label="Play Unsaid">
+          <span class="card-play">Play</span>
+          <h2>Unsaid</h2>
+          <div class="card-image-wrap">
+            <img src="games/unsaid/assets/unsaid-preview.svg" alt="Preview of Unsaid." width="320" height="180">
+          </div>
+          <p>A word game about finding what's already there, and making sure it doesn't go unsaid.</p>
+        </a>
+      </article>
+      <article class="game-card">
+        <a href="games/wordbridge/" class="card-link" aria-label="Play Word Bridge">
+          <span class="card-play">Play</span>
+          <h2>Word Bridge</h2>
+          <div class="card-image-wrap">
+            <img src="games/wordbridge/assets/wordbridge-preview.svg" alt="Preview of Word Bridge." width="320"
+              height="180">
+          </div>
+          <p>Place tiles to form words. Connect words to form a chain from start to end.</p>
+        </a>
+      </article>
+    </section>
 
     <footer>
       <nav>
