@@ -230,12 +230,18 @@ function validatePlacement(word, startRow, startCol, horizontal) {
 
   for (const run of perpendicularRuns) {
     if (!isValidWord(run)) {
-      for (const { r, c } of cellsToFill) grid[r][c] = null;
+      for (const i of newPositions) {
+        const { r, c } = cellsToFill[i];
+        grid[r][c] = null;
+      }
       return { ok: false, reason: "Adjacent letters must form valid words." };
     }
   }
 
-  for (const { r, c } of cellsToFill) grid[r][c] = null;
+  for (const i of newPositions) {
+    const { r, c } = cellsToFill[i];
+    grid[r][c] = null;
+  }
   if (newPositions.length === 0)
     return { ok: false, reason: "Place at least one new letter." };
   return { ok: true, cells: cellsToFill, newPositions };
@@ -486,10 +492,8 @@ function onClear() {
 function replaceTileAt(index) {
   hand[index] = generateOneTile();
   replaceRemaining--;
-  if (replaceRemaining === 0) {
-    replaceMode = false;
-    setMessage("");
-  }
+  replaceMode = false;
+  setMessage("");
   render();
 }
 

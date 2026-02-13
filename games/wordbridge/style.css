@@ -131,9 +131,11 @@ h1 {
   font-family: inherit;
   font-size: 0.8rem;
   background: transparent;
-  border: 1px solid var(--frame-line);
+  border: 1px solid rgba(111, 136, 149, 0.5);
+  border-radius: 6px;
   color: var(--text-muted);
   cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .restart-btn:hover,
@@ -179,10 +181,12 @@ h1 {
   padding: 0.25rem 0.5rem;
   font-family: inherit;
   font-size: 0.8rem;
-  background: transparent;
-  border: 1px solid var(--frame-line);
-  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid rgba(111, 136, 149, 0.5);
+  border-radius: 6px;
+  color: var(--text-primary);
   cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .dialog-close:hover {
@@ -247,21 +251,21 @@ h1 {
 }
 
 .cell.filled {
-  background: rgba(194, 109, 82, 0.15);
-  color: var(--accent);
+  background: rgba(111, 136, 149, 0.15);
+  color: var(--accent-secondary);
 }
 
 .cell.preview {
-  color: var(--accent);
+  color: var(--accent-secondary);
   opacity: 0.75;
-  background: rgba(194, 109, 82, 0.12);
+  background: rgba(111, 136, 149, 0.12);
   border-style: dashed;
 }
 
 .cell.next-slot {
-  background: rgba(194, 109, 82, 0.35);
-  border: 1px dashed rgba(194, 109, 82, 0.8);
-  box-shadow: inset 0 0 0 1px rgba(194, 109, 82, 0.25);
+  background: rgba(111, 136, 149, 0.35);
+  border: 1px dashed rgba(111, 136, 149, 0.8);
+  box-shadow: inset 0 0 0 1px rgba(111, 136, 149, 0.25);
 }
 
 .cell:hover:not(.start):not(.finish) {
@@ -273,9 +277,11 @@ h1 {
   font-family: inherit;
   font-size: 0.9rem;
   background: transparent;
-  border: 1px solid var(--frame-line);
+  border: 1px solid rgba(111, 136, 149, 0.5);
+  border-radius: 6px;
   color: var(--text-primary);
   cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .dir-btn[aria-pressed="true"] {
@@ -292,9 +298,17 @@ h1 {
   font-family: inherit;
   font-size: 0.95rem;
   background: transparent;
-  border: 1px solid var(--frame-line);
+  border: 1px solid rgba(111, 136, 149, 0.5);
+  border-radius: 6px;
   color: var(--text-primary);
   cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.action-btn:focus {
+  outline: none;
+  border-color: var(--accent-secondary);
+  box-shadow: 0 0 12px rgba(111, 136, 149, 0.35);
 }
 
 .action-btn:hover,
@@ -308,9 +322,11 @@ h1 {
   font-family: inherit;
   font-size: 0.85rem;
   background: transparent;
-  border: 1px solid var(--frame-line);
+  border: 1px solid rgba(111, 136, 149, 0.5);
+  border-radius: 6px;
   color: var(--text-muted);
   cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .tile-rack .replace-btn:disabled {
