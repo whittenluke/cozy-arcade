@@ -12,7 +12,7 @@ let wordsPlaced = 0;
 let gameOver = false;
 let level = null;
 let selectedCell = null;
-let placementDirectionHorizontal = true;
+let placementDirectionHorizontal = false;
 let wordInProgress = [];
 let handSelectionOrder = [];
 let replaceMode = false;
@@ -525,7 +525,9 @@ function initLevel() {
   hand = generateHand();
   wordsPlaced = 0;
   gameOver = false;
-  selectedCell = null;
+  const centerStartIdx = Math.floor(level.startZone.length / 2);
+  const [r, c] = level.startZone[centerStartIdx];
+  selectedCell = { r, c };
   wordInProgress = [];
   handSelectionOrder = [];
   replaceMode = false;
@@ -541,6 +543,7 @@ async function init() {
   validWords = new Set(words.map(w => String(w).toLowerCase()));
 
   initLevel();
+  setDirection(false);
 
   document.getElementById("btn-place").addEventListener("click", onPlace);
   document.getElementById("btn-clear").addEventListener("click", onClear);

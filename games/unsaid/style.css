@@ -157,7 +157,7 @@ main {
   text-align: center;
   color: var(--accent-secondary);
   margin-bottom: 1.5rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 400;
 }
 
@@ -269,7 +269,7 @@ button[type="submit"]:hover {
   }
 
   .theme {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
   }
 
   .slot {
