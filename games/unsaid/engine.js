@@ -140,4 +140,12 @@ function initGame() {
   input.focus();
 }
 
-window.addEventListener("DOMContentLoaded", initGame);
+window.addEventListener("DOMContentLoaded", () => {
+  initGame();
+  const rulesDialog = document.getElementById("rules-dialog");
+  document.getElementById("btn-rules").addEventListener("click", () => rulesDialog.showModal());
+  document.getElementById("btn-close-rules").addEventListener("click", () => rulesDialog.close());
+  rulesDialog.addEventListener("click", (e) => {
+    if (e.target === rulesDialog) rulesDialog.close();
+  });
+});

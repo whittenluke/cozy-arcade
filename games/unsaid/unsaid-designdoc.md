@@ -8,24 +8,24 @@ All files reside in games/unsaid/:
 
 index.html: Entry point.
 
-style.css: Custom game styling using the Deep Juniper (dark focus-mode) palette.
+style.css: Custom game styling using the Soft Sage White palette.
 
 engine.js: Game logic and state management.
 
 data.js: The dictionary of themes and words.
 
-3. Visual Identity (Deep Juniper Palette)
+3. Visual Identity (Soft Sage White Palette)
 Use the following CSS variables for all styling:
 
---bg: #2D3A3A; (Deep Juniper — primary background, dark focus-mode)
+--bg: #F4F7F5; (Soft Sage White — lighter, slightly greener than homepage; matches Cozy Arcade without being identical)
 
---text-primary: #EBF0F2; (Sky White — active text/input, inverse of Cozy Arcade bg)
+--accent-deep: #3A4D4A; (Dark Forest — all text and main letter box outlines; high contrast, very readable)
 
---text-muted: #94A3A2; (Mist — labels e.g. theme name, recedes so words pop)
+--ui-surface: #D1D9D7; (Soft Pebble — buttons or unselected tiles; subtle layer over background)
 
---frame-line: #455453; (Slate — borders for empty slots)
+--reveal: #E28D77; (Warm Clay — filled-in letters, successful guesses; keep as the star of the show)
 
---reveal: #E28D77; (Warm Terracotta — correctly guessed letters)
+--muted: #8AA19E; (Silver Leaf — "The word is said," "Topic: Music"; recedes so gameplay stays front-and-center)
 
 4. Game Logic & Mechanics
 State Management

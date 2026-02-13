@@ -1,10 +1,10 @@
 :root {
-  /* Deep Juniper — dark focus-mode palette */
-  --bg: #2D3A3A;            /* Deep Juniper — primary background */
-  --text-primary: #EBF0F2;  /* Sky White — active text/input */
-  --text-muted: #94A3A2;     /* Mist — labels, recedes so words pop */
-  --frame-line: #455453;     /* Slate — empty slot borders */
-  --reveal: #E28D77;         /* Warm Terracotta — correctly guessed letters */
+  /* Soft Sage White palette */
+  --bg: #F4F7F5;            /* Soft Sage White — lighter, slightly greener than homepage */
+  --accent-deep: #3A4D4A;   /* Dark Forest — text and letter box outlines, high contrast */
+  --ui-surface: #D1D9D7;     /* Soft Pebble — buttons, subtle layer over background */
+  --reveal: #E28D77;        /* Warm Clay — filled letters, successful guesses */
+  --muted: #8AA19E;         /* Silver Leaf — status/topic text, recedes */
 }
 
 * {
@@ -19,7 +19,7 @@ body {
   align-items: flex-start;
   justify-content: center;
   background-color: var(--bg);
-  color: var(--text-primary);
+  color: var(--accent-deep);
   font-family: "Times New Roman", Georgia, serif;
 }
 
@@ -29,13 +29,94 @@ main {
   padding: 2.5rem 1.5rem 3rem;
 }
 
-h1 {
-  font-size: 2.5rem;
+.game-header {
   margin-bottom: 4rem;
+}
+
+.game-header h1 {
+  font-size: 2.5rem;
+  margin: 0;
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--reveal);
   text-align: center;
+}
+
+.game-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.game-top-row .tokens {
+  position: static;
+}
+
+.rules-btn {
+  padding: 0.25rem 0.5rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  background: transparent;
+  border: 1px solid var(--accent-deep);
+  border-radius: 6px;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.rules-btn:hover {
+  color: var(--reveal);
+  border-color: var(--reveal);
+}
+
+.rules-dialog {
+  margin: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 360px;
+  padding: 1.25rem;
+  border: 1px solid var(--accent-deep);
+  background: var(--bg);
+  color: var(--accent-deep);
+  font-family: inherit;
+  border-radius: 8px;
+}
+
+.rules-dialog::backdrop {
+  background: rgba(58, 77, 74, 0.4);
+}
+
+.rules-dialog h2 {
+  font-size: 1.25rem;
+  color: var(--reveal);
+  margin-bottom: 0.75rem;
+}
+
+.rules-list {
+  margin: 0 0 1rem 1.25rem;
+  padding: 0;
+}
+
+.rules-list li {
+  margin-bottom: 0.35rem;
+}
+
+.dialog-close {
+  padding: 0.25rem 0.5rem;
+  font-family: inherit;
+  font-size: 0.8rem;
+  background: var(--ui-surface);
+  border: 1px solid var(--accent-deep);
+  border-radius: 6px;
+  color: var(--accent-deep);
+  cursor: pointer;
+}
+
+.dialog-close:hover {
+  color: var(--reveal);
+  border-color: var(--reveal);
 }
 
 .game-area {
@@ -44,17 +125,14 @@ h1 {
 }
 
 .tokens {
-  position: absolute;
-  top: -0.5rem;
-  right: 0;
-  color: var(--text-muted);
+  color: var(--muted);
   font-size: 0.95rem;
   margin: 0;
 }
 
 .theme {
   text-align: center;
-  color: var(--text-muted);
+  color: var(--muted);
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
   font-weight: 400;
@@ -76,8 +154,8 @@ h1 {
   justify-content: center;
   font-size: 1.75rem;
   padding: 0;
-  border-bottom: 2px solid var(--frame-line);
-  color: var(--text-primary);
+  border-bottom: 2px solid var(--accent-deep);
+  color: var(--accent-deep);
 }
 
 .slot.revealed {
@@ -103,34 +181,36 @@ h1 {
 }
 
 #guess-input {
-  border: 1px solid var(--frame-line);
+  border: 1px solid var(--accent-deep);
+  border-radius: 6px;
   padding: 0.5rem 0.75rem;
   font-size: 1.1rem;
   font-family: inherit;
-  background-color: rgba(226, 141, 119, 0.05);
-  color: var(--text-primary);
+  background-color: transparent;
+  color: var(--accent-deep);
   text-align: center;
   min-width: 200px;
 }
 
 #guess-input:focus {
-  outline: 2px solid var(--reveal);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--reveal);
 }
 
 button[type="submit"] {
-  border: 1px solid var(--frame-line);
-  background-color: transparent;
+  border: 1px solid var(--accent-deep);
+  border-radius: 6px;
+  background-color: var(--ui-surface);
   padding: 0.4rem 1rem;
   font-size: 1rem;
   font-family: inherit;
-  color: var(--text-primary);
+  color: var(--accent-deep);
   cursor: pointer;
 }
 
 button[type="submit"]:focus {
-  outline: 2px solid var(--reveal);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--reveal);
 }
 
 button[type="submit"]:hover {
@@ -140,7 +220,7 @@ button[type="submit"]:hover {
 .status {
   margin-top: 1.5rem;
   font-size: 1rem;
-  color: var(--text-muted);
+  color: var(--muted);
   text-align: center;
 }
 
@@ -149,9 +229,12 @@ button[type="submit"]:hover {
     padding: 3rem 2rem 3.5rem;
   }
 
-  h1 {
-    font-size: 3rem;
+  .game-header {
     margin-bottom: 5rem;
+  }
+
+  .game-header h1 {
+    font-size: 3rem;
   }
   
   .theme {
