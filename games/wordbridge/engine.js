@@ -543,6 +543,13 @@ async function init() {
   document.getElementById("btn-replace").addEventListener("click", onReplaceClick);
   document.getElementById("btn-restart").addEventListener("click", onRestart);
 
+  const rulesDialog = document.getElementById("rules-dialog");
+  document.getElementById("btn-rules").addEventListener("click", () => rulesDialog.showModal());
+  document.getElementById("btn-close-rules").addEventListener("click", () => rulesDialog.close());
+  rulesDialog.addEventListener("click", (e) => {
+    if (e.target === rulesDialog) rulesDialog.close();
+  });
+
   document.getElementById("dir-h").addEventListener("click", () => setDirection(true));
   document.getElementById("dir-v").addEventListener("click", () => setDirection(false));
 

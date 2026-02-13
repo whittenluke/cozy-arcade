@@ -94,18 +94,18 @@ h1 {
   color: var(--accent);
 }
 
-.back-link {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
+.top-nav {
+  margin-bottom: 0.75rem;
 }
 
-.back-link a {
+.back-btn {
+  font-family: inherit;
+  font-size: 0.85rem;
   color: var(--text-muted);
   text-decoration: none;
 }
 
-.back-link a:hover {
+.back-btn:hover {
   color: var(--accent);
 }
 
@@ -118,7 +118,14 @@ h1 {
   color: var(--text-muted);
 }
 
-.restart-btn {
+.game-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.restart-btn,
+.rules-btn {
   padding: 0.25rem 0.5rem;
   font-family: inherit;
   font-size: 0.8rem;
@@ -128,7 +135,56 @@ h1 {
   cursor: pointer;
 }
 
-.restart-btn:hover {
+.restart-btn:hover,
+.rules-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.rules-dialog {
+  margin: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 360px;
+  padding: 1.25rem;
+  border: 1px solid var(--frame-line);
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: inherit;
+}
+
+.rules-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.rules-dialog h2 {
+  font-size: 1.25rem;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.rules-list {
+  margin: 0 0 1rem 1.25rem;
+  padding: 0;
+}
+
+.rules-list li {
+  margin-bottom: 0.35rem;
+}
+
+.dialog-close {
+  padding: 0.25rem 0.5rem;
+  font-family: inherit;
+  font-size: 0.8rem;
+  background: transparent;
+  border: 1px solid var(--frame-line);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.dialog-close:hover {
   color: var(--accent);
   border-color: var(--accent);
 }
