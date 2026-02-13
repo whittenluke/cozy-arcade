@@ -32,7 +32,7 @@ const WORD_LIBRARY = {
   "GARDEN": {
     4: ["ROSE", "SEED", "DIRT", "HOSE", "PLOT", "GROW", "YARD", "TOOL", "ROOT", "WEED", "LILY", "IRIS", "FERN"],
     5: ["PLANT", "BLOOM", "PETAL", "GNOME", "MULCH", "PRUNE", "DAISY", "TULIP", "GRASS", "SNAIL", "WATER", "SHEAR"],
-    6: ["FLOWER", "SHOVEL", "ORCHID", "VIOLET", "BONSAI", "AZALEA", "ANNUAL", "GARDEN", "BRANCH", "POLLEN", "INSECT"]
+    6: ["FLOWER", "SHOVEL", "ORCHID", "VIOLET", "BONSAI", "AZALEA", "ANNUAL", "BRANCH", "POLLEN", "INSECT"]
   },
   "FOREST": {
     4: ["DEER", "FERN", "MOSS", "PINE", "TREE", "LEAF", "BARK", "TWIG", "ROOT", "BUSH", "WOOD", "BEAR", "WOLF", "VINE", "SOIL", "BIRD", "LIMB", "NEST", "SEED"],
