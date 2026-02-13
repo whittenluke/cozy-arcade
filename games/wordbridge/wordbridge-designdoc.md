@@ -22,14 +22,14 @@
 
 **Standard Letter Tiles:**
 - Single letters A-Z
-- Drawn from a pool/hand (recommend 7-tile hand like Scrabble)
+- Drawn from a pool/hand (8-tile hand, configurable per level via `handSize`)
 - Replenished after each word placement
 
 **Letter Planks (Multi-letter blocks):**
-- Common digraphs and suffixes: `ING`, `SH`, `CH`, `TH`, `QU`, `PH`, `EY`, `ED`, `ER`, `LY`
+- Common digraphs and suffixes: `ING`, `SH`, `CH`, `TH`, `QU`, `PH`, `EY`, `ED`, `ER`, `LY`, `ST`
 - Physical blocks that occupy multiple grid spaces
 - Cannot be broken apart—must be placed as a unit
-- Distributed randomly in player's available pieces (recommend 15-30% of available pieces)
+- Distributed randomly via per-level `plankChance` (e.g. 5% for Level 1; tutorial levels may use higher values)
 
 ### 1.3 Placement Rules
 
@@ -55,7 +55,7 @@
 - Planks allow "leaping" over problem areas to find clean placement zones
 
 ### 1.4 Valid Words
-- Use provided `scrabble_words.json` wordlist (CSW24 - 280,887 words)
+- Use provided word list (e.g. `wordbank.json`, CSW24-style; implementation loads from `wordbank.json`)
 - Case-insensitive matching
 - No proper nouns, abbreviations (already filtered in Scrabble list)
 
@@ -253,18 +253,19 @@ function checkCleanTouch(row, col, letter) {
 
 ### 5.4 Dictionary Integration
 
+Word list is loaded from `wordbank.json` (or equivalent). Implementation uses a base URL derived from the script so the game works from any path.
+
 ```javascript
-// Load dictionary on game start
+// Load dictionary on game start (e.g. wordbank.json)
 async function loadDictionary() {
-  const response = await fetch('data/scrabble_words.json');
+  const response = await fetch(wordbankUrl); // e.g. wordbank.json
   const words = await response.json();
-  validWords = new Set(words);
-  console.log(`Loaded ${validWords.size} valid words`);
+  validWords = new Set(words.map(w => String(w).toLowerCase()));
 }
 
 // Fast lookup
 function isValidWord(word) {
-  return validWords.has(word.toLowerCase());
+  return validWords.has(String(word).toLowerCase());
 }
 ```
 
@@ -304,7 +305,7 @@ function isValidWord(word) {
 - LY (adverbs)
 
 **Medium Value (situational):**
-- SH, CH, TH (digraphs)
+- SH, CH, TH, ST (digraphs)
 - QU (enables Q usage)
 - PH (less common)
 
@@ -314,20 +315,34 @@ function isValidWord(word) {
 
 ### 7.2 Plank Generation Algorithm
 
+Hand and replenish use the same per-tile logic: `handSize` and `plankChance` come from the level (defaults 8 and 0.05). The implementation uses `generateHand()` for a full hand and `generateTiles(n)` to replenish exactly `n` tiles after a word is placed.
+
 ```javascript
-function generateHand(level) {
-  const handSize = 7;
-  const plankChance = Math.max(0.1, 0.3 - (level * 0.01)); // 30% → 10%
-  const hand = [];
-  
-  for (let i = 0; i < handSize; i++) {
-    if (Math.random() < plankChance) {
-      hand.push(randomPlank()); // from plank list
+function generateHand() {
+  const size = level.handSize || 8;
+  const plankChance = level.plankChance != null ? level.plankChance : 0.05;
+  const out = [];
+  for (let i = 0; i < size; i++) {
+    if (level.planks?.length && Math.random() < plankChance) {
+      out.push(randomPlank());
     } else {
-      hand.push(randomLetter()); // weighted by frequency
+      out.push(randomLetter());
     }
   }
-  return hand;
+  return out;
+}
+
+function generateTiles(count) {
+  const plankChance = level.plankChance != null ? level.plankChance : 0.05;
+  const out = [];
+  for (let i = 0; i < count; i++) {
+    if (level.planks?.length && Math.random() < plankChance) {
+      out.push(randomPlank());
+    } else {
+      out.push(randomLetter());
+    }
+  }
+  return out;
 }
 ```
 
@@ -412,10 +427,14 @@ function generateHand(level) {
   "startZone": [[0, 6], [0, 7], [0, 8]],
   "finishZone": [[24, 6], [24, 7], [24, 8]],
   "obstacles": [],
-  "plankChance": 0.3,
-  "hint": "Try using ING to bridge long distances!"
+  "handSize": 8,
+  "plankChance": 0.05,
+  "replacePerLevel": 3,
+  "planks": ["ING", "ED", "ER", "LY", "QU", "PH", "TH", "SH", "ST", "CH", "EY"]
 }
 ```
+
+(`par` and `expertPar` are for future star-rating; `obstacles` for future level features.)
 
 ## Appendix B: Sample Clean Touch Scenarios
 

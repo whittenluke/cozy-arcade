@@ -35,6 +35,8 @@ function getLetterPool() {
 
 const LETTER_POOL = getLetterPool();
 
+const DIRS_4 = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+
 function randomLetter() {
   return LETTER_POOL[Math.floor(Math.random() * LETTER_POOL.length)];
 }
@@ -58,9 +60,25 @@ function generateHand() {
   return out;
 }
 
+function generateTiles(count) {
+  const plankChance = level.plankChance != null ? level.plankChance : 0.05;
+  const out = [];
+  for (let i = 0; i < count; i++) {
+    if (level.planks && level.planks.length && Math.random() < plankChance) {
+      out.push(randomPlank());
+    } else {
+      out.push(randomLetter());
+    }
+  }
+  return out;
+}
+
 function generateOneTile() {
-  const one = generateHand();
-  return one[0];
+  const plankChance = level.plankChance != null ? level.plankChance : 0.05;
+  if (level.planks && level.planks.length && Math.random() < plankChance) {
+    return randomPlank();
+  }
+  return randomLetter();
 }
 
 function isValidWord(word) {
@@ -81,8 +99,7 @@ function getCell(r, c) {
 }
 
 function hasExistingNeighbor(r, c, excludeR, excludeC) {
-  const dirs = [[-1, 0], [1, 0], [0, -1], [0, 1]];
-  for (const [dr, dc] of dirs) {
+  for (const [dr, dc] of DIRS_4) {
     const nr = r + dr, nc = c + dc;
     if (nr === excludeR && nc === excludeC) continue;
     const cell = getCell(nr, nc);
@@ -237,7 +254,7 @@ function applyPlacement(result) {
   for (const i of indicesToRemove) {
     hand.splice(i, 1);
   }
-  hand = hand.concat(generateHand().slice(0, indicesToRemove.length));
+  hand = hand.concat(generateTiles(indicesToRemove.length));
   handSelectionOrder = [];
   wordInProgress = [];
   selectedCell = null;
@@ -263,17 +280,23 @@ function getSlotPositions(startRow, startCol, horizontal, maxSlots) {
   return slots;
 }
 
-/** Preview: only our letters in slot positions (never override existing). nextSlot = where next tile goes. */
+/** Preview: one letter per cell; planks expand into consecutive cells. nextSlot = where next tile goes. */
 function getPreviewCells() {
   if (!selectedCell) return { cells: [], nextSlot: null };
   const sr = selectedCell.r, sc = selectedCell.c;
-  const numFilled = wordInProgress.length;
-  const slots = getSlotPositions(sr, sc, placementDirectionHorizontal, numFilled + 1);
+  const totalLetters = wordInProgress.reduce((sum, tile) => sum + tile.length, 0);
+  const slots = getSlotPositions(sr, sc, placementDirectionHorizontal, totalLetters + 1);
   const cells = [];
-  for (let i = 0; i < numFilled && i < slots.length; i++) {
-    cells.push({ r: slots[i].r, c: slots[i].c, letter: wordInProgress[i] });
+  let slotIndex = 0;
+  for (const tile of wordInProgress) {
+    for (const letter of tile) {
+      if (slotIndex < slots.length) {
+        cells.push({ r: slots[slotIndex].r, c: slots[slotIndex].c, letter });
+        slotIndex++;
+      }
+    }
   }
-  const nextSlot = slots[numFilled] || null;
+  const nextSlot = slots[totalLetters] || null;
   return { cells, nextSlot };
 }
 
@@ -490,6 +513,7 @@ function setDirection(horizontal) {
   placementDirectionHorizontal = horizontal;
   document.getElementById("dir-h").setAttribute("aria-pressed", horizontal ? "true" : "false");
   document.getElementById("dir-v").setAttribute("aria-pressed", horizontal ? "false" : "true");
+  render();
 }
 
 function initLevel() {

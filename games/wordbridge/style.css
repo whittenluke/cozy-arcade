@@ -208,8 +208,7 @@ h1 {
   border-color: var(--accent);
 }
 
-.action-btn,
-.tile-rack .replace-btn {
+.action-btn {
   padding: 0.4rem 0.75rem;
   font-family: inherit;
   font-size: 0.95rem;
@@ -226,8 +225,13 @@ h1 {
 }
 
 .tile-rack .replace-btn {
+  padding: 0.4rem 0.75rem;
+  font-family: inherit;
   font-size: 0.85rem;
+  background: transparent;
+  border: 1px solid var(--frame-line);
   color: var(--text-muted);
+  cursor: pointer;
 }
 
 .tile-rack .replace-btn:disabled {
