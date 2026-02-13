@@ -46,7 +46,7 @@ function randomPlank() {
 
 function generateHand() {
   const size = level.handSize || 8;
-  const plankChance = level.plankChance != null ? level.plankChance : 0.08;
+  const plankChance = level.plankChance != null ? level.plankChance : 0.05;
   const out = [];
   for (let i = 0; i < size; i++) {
     if (level.planks && level.planks.length && Math.random() < plankChance) {

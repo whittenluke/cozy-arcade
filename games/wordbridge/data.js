@@ -7,7 +7,7 @@ const LEVEL_1 = {
   finishZone: [[24, 6], [24, 7], [24, 8]],
   obstacles: [],
   handSize: 8,
-  plankChance: 0.08,
-  planks: ["ING", "ED", "ER", "LY"],
+  plankChance: 0.05,
+  planks: ["ING", "ED", "ER", "LY", "QU", "PH", "TH", "SH", "ST", "CH", "EY"],
   replacePerLevel: 3
 };
