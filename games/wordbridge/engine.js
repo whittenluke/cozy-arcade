@@ -251,59 +251,53 @@ function checkWin(lastCells) {
   return false;
 }
 
+/** From (startRow, startCol) in direction, collect up to maxSlots empty cells (slot positions). */
+function getSlotPositions(startRow, startCol, horizontal, maxSlots) {
+  const slots = [];
+  let r = startRow, c = startCol;
+  const rows = level.gridHeight, cols = level.gridWidth;
+  while (slots.length < maxSlots && r >= 0 && r < rows && c >= 0 && c < cols) {
+    if (getCell(r, c) == null) slots.push({ r, c });
+    if (horizontal) c++; else r++;
+  }
+  return slots;
+}
+
+/** Preview: only our letters in slot positions (never override existing). nextSlot = where next tile goes. */
 function getPreviewCells() {
-  if (!selectedCell || wordInProgress.length === 0) return [];
-  let startRow = selectedCell.r, startCol = selectedCell.c;
-  let prefix = "";
-  if (placementDirectionHorizontal) {
-    let c = startCol - 1;
-    while (c >= 0 && getCell(startRow, c) != null) {
-      prefix = getCell(startRow, c) + prefix;
-      c--;
-    }
-  } else {
-    let r = startRow - 1;
-    while (r >= 0 && getCell(r, startCol) != null) {
-      prefix = getCell(r, startCol) + prefix;
-      r--;
-    }
+  if (!selectedCell) return { cells: [], nextSlot: null };
+  const sr = selectedCell.r, sc = selectedCell.c;
+  const numFilled = wordInProgress.length;
+  const slots = getSlotPositions(sr, sc, placementDirectionHorizontal, numFilled + 1);
+  const cells = [];
+  for (let i = 0; i < numFilled && i < slots.length; i++) {
+    cells.push({ r: slots[i].r, c: slots[i].c, letter: wordInProgress[i] });
   }
-  const existingStart = getCell(startRow, startCol);
-  const word = wordInProgress.join("");
-  if (!word && !existingStart) return [];
-  const wordPart = (existingStart || "") + word;
-  if (prefix.length > 0) {
-    if (placementDirectionHorizontal) startCol -= prefix.length;
-    else startRow -= prefix.length;
-  }
-  let suffix = "";
-  if (placementDirectionHorizontal) {
-    let c = startCol + prefix.length + wordPart.length;
-    while (c < level.gridWidth && getCell(startRow, c) != null) {
-      suffix += getCell(startRow, c);
-      c++;
+  const nextSlot = slots[numFilled] || null;
+  return { cells, nextSlot };
+}
+
+function getPlacementWord() {
+  if (!selectedCell || wordInProgress.length === 0) return "";
+  let r = selectedCell.r, c = selectedCell.c;
+  const rows = level.gridHeight, cols = level.gridWidth;
+  let word = "";
+  let i = 0;
+  while (i < wordInProgress.length && r >= 0 && r < rows && c >= 0 && c < cols) {
+    const existing = getCell(r, c);
+    if (existing != null) {
+      word += existing;
+    } else {
+      word += wordInProgress[i];
+      i++;
     }
-  } else {
-    let r = startRow + prefix.length + wordPart.length;
-    while (r < level.gridHeight && getCell(r, startCol) != null) {
-      suffix += getCell(r, startCol);
-      r++;
-    }
+    if (placementDirectionHorizontal) c++; else r++;
   }
-  const fullWord = prefix + wordPart + suffix;
-  const out = [];
-  for (let i = 0; i < fullWord.length; i++) {
-    const r = placementDirectionHorizontal ? startRow : startRow + i;
-    const c = placementDirectionHorizontal ? startCol + i : startCol;
-    if (r >= 0 && r < level.gridHeight && c >= 0 && c < level.gridWidth) {
-      out.push({ r, c, letter: fullWord[i] });
-    }
-  }
-  return out;
+  return word;
 }
 
 function renderBoard() {
-  const previewCells = getPreviewCells();
+  const { cells: previewCells, nextSlot } = getPreviewCells();
   const previewMap = new Map(previewCells.map(({ r, c, letter }) => [r + "," + c, letter]));
 
   const board = document.getElementById("board");
@@ -329,6 +323,9 @@ function renderBoard() {
       } else if (grid[r][c] != null) {
         cell.classList.add("filled");
         cell.textContent = grid[r][c];
+      }
+      if (nextSlot && nextSlot.r === r && nextSlot.c === c) {
+        cell.classList.add("next-slot");
       }
       if (selectedCell && selectedCell.r === r && selectedCell.c === c) {
         cell.classList.add("selected");
@@ -420,10 +417,6 @@ function onTileClick(index) {
   }
   wordInProgress = handSelectionOrder.map(i => hand[i]);
   render();
-}
-
-function getPlacementWord() {
-  return wordInProgress.join("");
 }
 
 function onPlace() {
