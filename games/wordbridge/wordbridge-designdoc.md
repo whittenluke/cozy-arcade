@@ -275,17 +275,17 @@ function isValidWord(word) {
 
 ### 6.0 Colour palette
 
-Word Bridge uses its own palette (distinct from other Cozy Arcade games). CSS custom properties in `style.css`:
+Word Bridge uses its own palette. CSS custom properties in `style.css`:
 
 | Token | Hex | Use |
 |-------|-----|-----|
-| `--bg` | #F6F1E8 | Page and board background |
+| `--bg` | #F3F4F6 | Page background |
 | `--text-primary` | #3E3A36 | Primary text |
 | `--text-muted` | #6F8895 | Secondary text, labels |
-| `--frame-line` | #D5CFC4 | Borders, dividers, grid lines |
+| `--frame-line` | #E8E6E2 | Borders, dividers, grid lines |
 | `--accent` | #C26D52 | Primary accent — links, buttons, highlights, placed letters |
 | `--accent-secondary` | #6F8895 | Secondary accent |
-| `--start-finish` | #E7E1D6 | Start/Finish zone cell background |
+| `--start-finish` | #FAFAF8 | Start/Finish zone cell background (game surface) |
 
 ### 6.1 Visual Polish
 - Smooth tile animations (slide into place, 200ms)

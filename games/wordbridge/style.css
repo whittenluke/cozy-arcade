@@ -1,11 +1,11 @@
 :root {
-  --bg: #F6F1E8;
+  --bg: #F3F4F6;
   --text-primary: #3E3A36;
   --text-muted: #6F8895;
-  --frame-line: #D5CFC4;
+  --frame-line: #D0D8DE;
   --accent: #C26D52;
   --accent-secondary: #6F8895;
-  --start-finish: #E7E1D6;
+  --start-finish: rgba(194, 109, 82, 0.12);
 }
 
 * {
@@ -237,6 +237,7 @@ h1 {
   background: var(--bg);
   color: var(--text-primary);
   cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .cell.start,
@@ -245,13 +246,13 @@ h1 {
 }
 
 .cell.selected {
-  outline: 2px solid var(--accent);
-  outline-offset: -2px;
+  background: var(--bg);
+  border-color: var(--accent);
   z-index: 1;
 }
 
 .cell.filled {
-  background: rgba(111, 136, 149, 0.15);
+  background: rgba(194, 109, 82, 0.14);
   color: var(--accent-secondary);
 }
 
@@ -269,7 +270,8 @@ h1 {
 }
 
 .cell:hover:not(.start):not(.finish) {
-  background: rgba(190, 197, 193, 0.6);
+  background: rgba(194, 109, 82, 0.1);
+  border-color: rgba(194, 109, 82, 0.5);
 }
 
 .dir-btn {

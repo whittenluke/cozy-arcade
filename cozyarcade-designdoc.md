@@ -86,16 +86,18 @@ Cozy Arcade
 **Color**
 
 Recommended scheme:
-- Background: `#EBF0F2` (Sky Base — pale, cool fog)
-- Text: `#3E4A59` (Deep Slate Blue)
-- Muted Highlight: `#A3B5C0` (Glacial Blue)
-- Human Touch: `#D9A294` (Muted Terracotta/Clay)
+- Page background: `#F3F4F6` (soft neutral grey)
+- Game surface: `#FAFAF8` (near white — cards, boards, elevated panels)
+- Primary text: `#3E3A36`
+- Primary accent: `#C26D52` (links, buttons, highlights)
+- Secondary accent: `#6F8895` (muted text, labels, subtle UI)
 
 Design justification:
-- Sky Base is forgiving — scales from 1 game to 20 without feeling cluttered
-- Terracotta accent used sparingly (e.g., "About" link) adds human warmth
-- Glacial Blue for subtle background shifts to define game areas without hard lines
-- Cool palette stays calm; warm accent prevents coldness
+- Neutral grey background is forgiving — scales from 1 game to 20 without feeling cluttered
+- Primary accent used sparingly (e.g., "About" link) adds warmth
+- Secondary accent for descriptions and subtle UI keeps the palette calm
+
+Games each define their own palette in their own design docs and stylesheets.
 
 **Typography**
 
@@ -252,11 +254,12 @@ All colors, spacing, and typography must use these CSS variables:
 
 ```css
 :root {
-  --bg-color: #EBF0F2;        /* Sky Base */
-  --text-primary: #3E4A59;    /* Deep Slate */
-  --text-muted: #70757A;      /* For descriptions */
-  --accent: #D9A294;          /* Terracotta */
-  --subtle-ui: #A3B5C0;       /* Glacial Blue */
+  --bg-color: #F3F4F6;        /* Page background */
+  --game-surface: #FAFAF8;    /* Cards, elevated surfaces */
+  --text-primary: #3E3A36;    /* Primary text */
+  --text-muted: #6F8895;      /* Descriptions, muted text */
+  --accent: #C26D52;          /* Primary accent */
+  --subtle-ui: #6F8895;       /* Secondary accent */
   --font-main: 'IBM Plex Serif', Georgia, serif;
 }
 ```
